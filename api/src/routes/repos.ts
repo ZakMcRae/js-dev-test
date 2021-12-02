@@ -19,7 +19,9 @@ repos.get('/', async (_: Request, res: Response) => {
   // combine both repo data sources
   const allRepos = [...jsonRepoData, ...response.data];
 
-  // TODO: See README.md Task (A). Return repo data here. You’ve got this!
-  // res.json([]);
-  res.json(allRepos);
+  // filter repos by respository.fork
+  const filteredRepos = allRepos.filter((repo) => repo.fork === false);
+
+  // return filtered repo data
+  res.json(filteredRepos);
 });
