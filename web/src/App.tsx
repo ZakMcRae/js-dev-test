@@ -21,7 +21,14 @@ export function App() {
           );
         } else {
           // put the fetched data into repoApiData in state
-          setRepoApiData(await apiResponse.json());
+          const jsonRepoData = await apiResponse.json();
+
+          // sort repo data by reverse chronological order
+          jsonRepoData.sort((a: any, b: any) =>
+            a.created_at > b.created_at ? 1 : -1
+          );
+
+          setRepoApiData(jsonRepoData);
         }
       } catch (error) {
         alert(
