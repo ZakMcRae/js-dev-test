@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import RepoList from './components/RepoList';
+import FilterButtons from './components/FilterButtons';
 
 export function App() {
+  // keep track of sort option
+  const [sortBy, setSortBy] = useState('all');
+
   // keep track of api repo data
   const [repoApiData, setRepoApiData] = useState([]);
 
@@ -42,7 +46,10 @@ export function App() {
 
   return (
     <div className="App">
-      {repoApiData === [] ? null : <RepoList repoApiData={repoApiData} />}
+      <FilterButtons repoApiData={repoApiData} setSortBy={setSortBy} />
+      {repoApiData === [] ? null : (
+        <RepoList repoApiData={repoApiData} sortBy={sortBy} />
+      )}
     </div>
   );
 }

@@ -19,4 +19,18 @@
 .repository-list h1 {
   text-align: center;
 }
+
+.filter-buttons {
+  text-align: center;
+}
+
+.filter-buttons button {
+  padding: 5px 10px;
+  margin: 5px;
+}
+
+.filter-buttons button:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
 /*# sourceMappingURL=App.css.map */
