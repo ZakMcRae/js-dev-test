@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
+import RepoList from './components/RepoList';
 
 export function App() {
   // keep track of api repo data
@@ -34,8 +35,7 @@ export function App() {
 
   return (
     <div className="App">
-      {/* todo delete button */}
-      <button onClick={() => console.log(repoApiData)}>Log repo Data</button>
+      {repoApiData === [] ? null : <RepoList repoApiData={repoApiData} />}
     </div>
   );
 }

@@ -1,0 +1,21 @@
+.repository-list {
+  margin: auto;
+  max-width: 80%;
+
+  table,
+  td,
+  th {
+    border: 1px solid black;
+    border-collapse: collapse;
+  }
+
+  td,
+  th {
+    text-align: center;
+    padding: 5px 10px;
+  }
+
+  h1 {
+    text-align: center;
+  }
+}
