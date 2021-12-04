@@ -1,6 +1,11 @@
 .repository-list {
   margin: auto;
   max-width: 80%;
+  text-align: center;
+}
+
+.repository-list table {
+  margin: 10px auto;
 }
 
 .repository-list table,
