@@ -1,6 +1,6 @@
 import React from 'react';
 
-function RepoList({ repoApiData, sortBy }) {
+function RepoList({ repoApiData, sortBy, setRepoToDisplay }) {
   return (
     <div className="repository-list">
       <h1>Repository List</h1>
@@ -15,11 +15,16 @@ function RepoList({ repoApiData, sortBy }) {
         </thead>
         <tbody>
           {/* renders repositorys based on value of sortBy in state */}
+          {/* added onClick for table rows - sets repo to be displayed in RepoDetail popup */}
           {sortBy === 'all'
             ? // when sort by is 'all' ignore the filter
               repoApiData.map((repo, index) => {
                 return (
-                  <tr key={index}>
+                  <tr
+                    key={index}
+                    className="repository-link"
+                    onClick={() => setRepoToDisplay(repo.full_name)}
+                  >
                     <td>{repo.name}</td>
                     <td>{repo.description}</td>
                     <td>{repo.language}</td>
@@ -32,7 +37,11 @@ function RepoList({ repoApiData, sortBy }) {
                 .filter((repo) => repo.language === sortBy)
                 .map((repo, index) => {
                   return (
-                    <tr key={index}>
+                    <tr
+                      key={index}
+                      className="repository-link"
+                      onClick={() => setRepoToDisplay(repo.full_name)}
+                    >
                       <td>{repo.name}</td>
                       <td>{repo.description}</td>
                       <td>{repo.language}</td>

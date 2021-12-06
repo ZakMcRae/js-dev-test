@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import RepoList from './components/RepoList';
 import FilterButtons from './components/FilterButtons';
+import RepoDetail from './components/RepoDetail';
 
 export function App() {
   // keep track of sort option
@@ -9,6 +10,9 @@ export function App() {
 
   // keep track of api repo data
   const [repoApiData, setRepoApiData] = useState([]);
+
+  // keep track of which repo detail to display
+  const [repoToDisplay, setRepoToDisplay] = useState(null);
 
   // fetch api repo data on intial load
   useEffect(() => {
@@ -47,9 +51,18 @@ export function App() {
   return (
     <div className="App">
       <FilterButtons repoApiData={repoApiData} setSortBy={setSortBy} />
-      {repoApiData === [] ? null : (
-        <RepoList repoApiData={repoApiData} sortBy={sortBy} />
-      )}
+      {repoApiData ? (
+        <RepoList
+          repoApiData={repoApiData}
+          sortBy={sortBy}
+          setRepoToDisplay={setRepoToDisplay}
+        />
+      ) : null}
+      {repoToDisplay ? (
+        <div className="close-popup" onClick={() => setRepoToDisplay(null)}>
+          <RepoDetail repoToDisplay={repoToDisplay} />
+        </div>
+      ) : null}
     </div>
   );
 }
